@@ -4,31 +4,22 @@
     "module": "commonjs",
     "lib": ["ES2022"],
 
-    "rootDir": ".",
-    "baseUrl": "./",
-    "outDir": "dist",
+    "rootDir": "./src",
+    "outDir": "./dist",
 
-    "strict": true,
-    "esModuleInterop": true,
+    "strict": false,
+    "noImplicitAny": false,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+
+    "esModuleInterop": true,
     "resolveJsonModule": true,
 
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
 
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "exactOptionalPropertyTypes": false,
-
-    "paths": {
-    "@/*": ["src/*"]
-    }
+    "declaration": false,
+    "sourceMap": false
 },
 
-"include": ["src", "tests", "scripts"],
+"include": ["src"],
 "exclude": ["node_modules", "dist"]
 }

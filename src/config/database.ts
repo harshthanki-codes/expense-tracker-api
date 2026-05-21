@@ -14,7 +14,8 @@ export const prisma =
   });
 
 if (env.NODE_ENV === 'development') {
-  (prisma as PrismaClient & { $on: Function }).$on('query', (e: { query: string; duration: number }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (prisma as any).$on('query', (e: { query: string; duration: number }) => {
     if (e.duration > 100) {
       logger.warn({ query: e.query, durationMs: e.duration }, 'Slow query detected');
     }

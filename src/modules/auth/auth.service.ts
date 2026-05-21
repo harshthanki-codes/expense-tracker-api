@@ -188,17 +188,9 @@ userId: string,
 email: string,
 ): TokenPair {
 return {
-    accessToken: signAccessToken({
-    sub: userId,
-    email,
-    type: 'access',
-    }),
+    accessToken: signAccessToken(userId, email),
 
-    refreshToken: signRefreshToken({
-    sub: userId,
-    email,
-    type: 'refresh',
-    }),
+    refreshToken: signRefreshToken(userId, email),
 
     expiresIn: env.JWT_ACCESS_EXPIRES_IN,
 };

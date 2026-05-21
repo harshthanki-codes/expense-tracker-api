@@ -17,7 +17,7 @@ import { authRouter } from './modules/auth/auth.router';
 import { usersRouter } from './modules/users/users.router';
 import { transactionsRouter } from './modules/transactions/transactions.router';
 import { categoriesRouter } from './modules/categories/categories.router';
-import { analyticsRouter } from './modules/analytics/analytics.router';
+import analyticsRouter from './modules/analytics/analytics.router';
 
 export function createApp() {
   const app = express();

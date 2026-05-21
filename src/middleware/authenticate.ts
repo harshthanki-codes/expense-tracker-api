@@ -19,16 +19,12 @@ const token = authHeader.slice(7);
 
 const payload = verifyToken(token);
 
-// Optional safety check
-if ((payload as any).type && (payload as any).type !== 'access') {
+if (payload.type && payload.type !== 'access') {
     throw new UnauthorizedError('Access token required');
 }
 
-// Optional blocklist check
-const jti = (payload as any).jti;
-
-if (jti) {
-    const isBlocklisted = await redis.get(`blocklist:${jti}`);
+if (payload.jti) {
+    const isBlocklisted = await redis.get(`blocklist:${payload.jti}`);
 
     if (isBlocklisted) {
     throw new UnauthorizedError('Token has been revoked');
@@ -36,8 +32,8 @@ if (jti) {
 }
 
 req.user = {
-    id: payload.sub || '',
-    email: (payload as any).email || '',
+    id: payload.sub,
+    email: payload.email || '',
 };
 
 next();
